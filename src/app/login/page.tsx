@@ -32,8 +32,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex flex-col p-3 justify-center align-center">
-      <h1 className="text-white text-4xl text-center">{loading? "Processing": "Login"}</h1>
+    <div className="flex flex-col p-3 justify-center items-center mt-8">
+      <h1 className="text-white text-4xl text-center">
+        {loading ? "Processing...." : "Login"}
+      </h1>
 
       <div className="flex flex-col gap-2 mt-3">
         <label htmlFor="email">Email</label>
@@ -59,9 +61,13 @@ const LoginPage = () => {
       </div>
       <button
         onClick={onLogin}
-        className="mt-4 p-2 bg-slate-300 text-neutral-950"
+        className={`${
+          disabled
+            ? "mt-4 p-2 bg-green-500 text-neutral-200 cursor-pointer"
+            : "mt-4 p-2 bg-slate-300 text-neutral-950 cursor-pointer"
+        }`}
       >
-        {disabled? "Login": "No Login"}
+        Login
       </button>
       <Link href="/signup" className="text-center mt-2">
         Go to signup page

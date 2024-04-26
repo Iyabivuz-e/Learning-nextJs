@@ -15,7 +15,8 @@ const SignupPage = () => {
   });
   const [loading, setLoading ] = useState(false)
   //If there is nothing in the text inputs, then the button should be disabled
-  const [disabled, setDisabled] = useState <boolean | null >(null)
+  const [disabled, setDisabled] = useState< boolean | null> (null)
+
   useEffect(() => {
     if (
       user.email?.length > 0 &&
@@ -47,7 +48,8 @@ const SignupPage = () => {
     };
 
   return (
-    <div className="flex flex-col p-3 justify-center align-center">
+    <div className="flex flex-col justify-center items-center w-full mt-8">
+
       <h1 className="text-white text-4xl text-center">
         {loading ? "Processing..." : "Signup"}
       </h1>
@@ -86,9 +88,13 @@ const SignupPage = () => {
       </div>
       <button
         onClick={onSignUp}
-        className="mt-4 p-2 bg-slate-300 text-neutral-950"
+        className={`${
+          disabled
+            ? "mt-4 p-2 bg-slate-300 text-neutral-950 cursor-pointer"
+            : "mt-4 p-2 bg-green-500 text-neutral-200 cursor-pointer"
+        }`}
       >
-        {disabled ? "No SignUp" : "SignUp"}
+        Signup
       </button>
       <Link href="/login" className="text-center mt-2">
         Back to login page
